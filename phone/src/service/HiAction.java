@@ -6,13 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CheckAction implements CommandProcess{
+public class HiAction implements CommandProcess {
 
-
+	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		return "/member/check.jsp";
+		return "/member/abcd.jsp";
 	}
 
 }

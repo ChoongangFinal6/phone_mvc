@@ -14,7 +14,8 @@
 </head>
 <body>
 	<h2>개인인증</h2>
-	<form action="">
+	<form action="" >
+	    <div id="back" >
 		<div>
 			<div id="name1">이름</div>
 			<span class="abc"></span> 
@@ -28,8 +29,13 @@
 		<div>
 			<div id="gender1">성별</div>
 			<span class="abc"></span> 
-			<input type="text" id="gender">
+			<select name="gender">
+			<option value="man">남자</option>
+			<option value="woman">여자</option>
+			</select>
 		</div>
+	    </div>
+		<div><input type="submit" value="확인"></div>
 	</form>
 </body>
 </html>

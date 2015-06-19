@@ -65,7 +65,6 @@ public class Controller extends HttpServlet {
 	//시용자의 요청을 분석해서 해당 작업을 처리
 	private void requestPro(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		 System.out.println("CCCC");
 		String view = null;
 	    CommandProcess com = null;
 	    try {	String command = request.getRequestURI();
@@ -77,10 +76,12 @@ public class Controller extends HttpServlet {
 	         // }
 	          com = (CommandProcess)commandMap.get(command);  
 	          view = com.requestPro(request, response);
-	    } catch(Throwable e) { throw new ServletException(e); } 
-	    System.out.println(view);
-	    RequestDispatcher dispatcher =
-	        	request.getRequestDispatcher(view);
-	   dispatcher.forward(request, response);
+	    } catch(Throwable e) { throw new ServletException(e); }
+	    
+	    System.out.println("===========1" + view);
+	    RequestDispatcher dispatcher;
+	    request.setAttribute("viewPage", view);
+	    dispatcher=request.getRequestDispatcher("/template/index.jsp");
+	    dispatcher.forward(request, response);
 	}
 }

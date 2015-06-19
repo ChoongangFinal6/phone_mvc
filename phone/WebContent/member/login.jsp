@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,7 @@
 <input type="password" name="password" placeholder="비밀번호"  required="required">
 <input type="submit"  value="로그인"  required="required">
 <input type="button" name="join" value="회원가입" class="join" id="join">
+<input type="button" name="hi" value="하이" onclick="location.href='${root}/member/hi.do'" />
 </form>
 
 

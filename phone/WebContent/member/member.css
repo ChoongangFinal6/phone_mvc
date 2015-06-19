@@ -3,6 +3,5 @@
 #name1 {width: 70px; float: left;}
 #date1 {width: 70px; float: left;}
 #gender1 {width: 70px; float: left;}
-
-
+#back {border: 1px solid green; width:400px; height: 150px;}
 .abc {margin: 0 30px 0 30px;}
