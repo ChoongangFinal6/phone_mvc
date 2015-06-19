@@ -13,29 +13,37 @@
 </script>
 </head>
 <body>
+<c:if test="${result <0}">
+<div>실명확인 인증에 실패 했습니다.</div>
+</c:if>  
 	<h2>개인인증</h2>
-	<form action="" >
 	    <div id="back" >
+	<form action="join.do" method="post">
+	    
+	    <div id="back0"><br>회원을 가입하시려면 반드시 본인 인증을 필요로 합니다. 아래 정보를 기입하여 본인 인증을 확인 하시기 바랍니다.</div>
+	    <div id="back1">
 		<div>
 			<div id="name1">이름</div>
 			<span class="abc"></span> 
-			<input type="text" id="name">
+			<input type="text" name="name">
 		</div>
 		<div>
 			<div id="date1">생년월일</div>
 			<span class="abc"></span> 
-			<input type="date" id="date">
+			<input type="date" name="birthdate">
 		</div>
 		<div>
 			<div id="gender1">성별</div>
 			<span class="abc"></span> 
 			<select name="gender">
-			<option value="man">남자</option>
-			<option value="woman">여자</option>
+			<option value="1">남자</option>
+			<option value="2">여자</option>
 			</select>
 		</div>
 	    </div>
-		<div><input type="submit" value="확인"></div>
+	    <P> <P> <P> <P> <P>
+		<div><input type="submit" value="개인인증확인" ></div>
 	</form>
+	    </div>
 </body>
 </html>

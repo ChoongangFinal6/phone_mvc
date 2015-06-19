@@ -3,5 +3,8 @@
 #name1 {width: 70px; float: left;}
 #date1 {width: 70px; float: left;}
 #gender1 {width: 70px; float: left;}
-#back {border: 1px solid green; width:400px; height: 150px;}
+#back {position: relative; margin-left:  100px auto;}
+#back0 {background-color:#f95a33; width:400px; height: 100px; color: white;}
+#back1 {border: 1px solid #f95a33; width:400px; height: 70px;}
+#form {al}
 .abc {margin: 0 30px 0 30px;}

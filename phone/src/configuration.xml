@@ -3,16 +3,9 @@
 <configuration>
 	<properties resource="dbconnect.properties" />
 	<typeAliases>
-		<typeAlias type="dto.BoardS" alias="BoardS" />
-		<typeAlias type="dto.Member" alias="Member" />
-		<typeAlias type="dto.BoardG" alias="BoardG" />
-		<typeAlias type="dto.BoardA" alias="BoardA" />
-		<typeAlias type="dto.Authority" alias="Authority" />
-		<typeAlias type="dto.Member_auth" alias="Member_auth" />
-		<typeAlias type="dto.ReplyS" alias="ReplyS" />
-		<typeAlias type="dto.VoteS" alias="VoteS" />
-		<typeAlias type="dto.ReplyA" alias="ReplyA" />
-
+	
+		<typeAlias type="dto.PersonInfo" alias="PersonInfo" />
+	
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,14 +19,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="ReplyS.xml" />
-		<mapper resource="VoteS.xml" />
-		<mapper resource="ReplyA.xml" />
-		<mapper resource="BoardS.xml" />
-		<mapper resource="Member.xml" />
-		<mapper resource="BoardG.xml" />
-		<mapper resource="BoardA.xml" />
-		<mapper resource="Authority.xml" />
-		<mapper resource="Member_auth.xml" />
+		<mapper resource="PersonInfo.xml" />
+		
 	</mappers>
 </configuration>

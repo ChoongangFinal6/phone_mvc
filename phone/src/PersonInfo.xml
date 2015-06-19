@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PersonInfo">
+	<resultMap type="PersonInfo" id="PersonMap">
+		<result property="name" column="name" />
+		<result property="birthdate" column="birthdate" />
+		<result property="gender" column="gender" />
+	</resultMap>
+
+	<select id="select" parameterType="String" resultMap="PersonMap">
+		select * from person_info where name = #{name} 
+	</select>
+	
+</mapper>
