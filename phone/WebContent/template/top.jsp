@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>오키오키</div>
+	<jsp:include page="../member/login.jsp"></jsp:include>
 </body>
 </html>

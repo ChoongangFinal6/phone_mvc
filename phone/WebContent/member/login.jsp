@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="loginPro.do" method="get">
-<input type="text" name="id" placeholder="아이디"  required="required">
+<input type="tel" name="id" placeholder="아이디(xxx-xxxx-xxxx)"  required="required" pattern="\d{3}[\-]\d{4}[\-]\d{4}">
 <input type="password" name="password" placeholder="비밀번호"  required="required">
 <input type="submit"  value="로그인"  required="required">
 <input type="button" name="join" value="회원가입" class="join" id="join">
