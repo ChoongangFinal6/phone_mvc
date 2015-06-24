@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${sessionScope.id != null || sessionScope.id != ''}">
+	<c:if test="${sessionScope.id!=null}">
 		<jsp:include page="../member/memberInfo.jsp"></jsp:include>
 	</c:if>
 	 <c:if test="${sessionScope.id == null || sessionScope.id == ''}">

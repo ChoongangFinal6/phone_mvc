@@ -10,7 +10,7 @@
 <script type="text/javascript" src="./member.js"></script>
 </head>
 <body>
-<form action="loginPro.do" method="post">
+<form action="${root}/member/loginPro.do" method="post">
 <input type="tel" name="id" placeholder="아이디(xxx-xxxx-xxxx)"  required="required" 
 pattern="\d{3}[\-]\d{4}[\-]\d{4}" id="logid">
 <input type="password" name="password" placeholder="비밀번호"  required="required" id="pwd">
