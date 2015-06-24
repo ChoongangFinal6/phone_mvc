@@ -37,8 +37,9 @@ public class DeviceDao {
 	}
 	
 	// 새로 수신된 문자의 수를 조회
-	public int getNewSMS(int recvId){
-		System.out.print("--SMSDao newSMS : ");
+	public int getNewSMS(String recvId){
+		System.out.print("----SMSDao newSMS : " + recvId + "에게 온 새 메세지 ");
+		
 		SqlSession session = getSession();
 		int result = 0;
 		result = (int) session.selectOne("SMS.newSMS", recvId);
@@ -49,33 +50,36 @@ public class DeviceDao {
 	
 
 	// 새로 수신된 문자 목록 조회
-	public List<SMS> listNewSMS(int recvId){
-		System.out.println("--SMSDao listSMS : "+recvId);
+	public List<SMS> listNewSMS(String recvId){
+		System.out.println("----SMSDao listSMS : ");
 		
-		SqlSession session = getSession();		
+		SqlSession session = getSession();
+		// 새 문자를 보낸 발신자들을 조회
 		List<SMS> senderList = session.selectList("SMS.listNewSenders", recvId);
+		// 모든 새 문자들을 조회
 		List<SMS> msgList = session.selectList("SMS.listNewSMS", recvId);
 
+		// 발신자별로, 읽지않은 문자들의 갯수와 가장 최근에 수신한 문자의 정보를 저장
 		for(int i = 0; i<senderList.size(); i++){
 			int num = 0;
 			for(SMS msg : msgList){
-				if(senderList.get(i).getSendId()==msg.getSendId()){
+				if( senderList.get(i).getSendId().equals(msg.getSendId()) ){
 					num++;
 					senderList.set(i, msg);
 					senderList.get(i).setNumOfNew(num);
 				}
 			}
-			System.out.println("발신자:"+senderList.get(i).getSendId() +
+			System.out.println("---- 발신자:"+senderList.get(i).getSendId() +
 					", 새문자수:"+senderList.get(i).getNumOfNew() +
 					", 내용:"+senderList.get(i).getContent());
 		}
-		session.close();		
+		session.close();
 		return senderList;
 	}
 
 	// 선택한 발신자와의 대화목록 조회
-	public List<SMS> detailSMS(int sendId, int recvId) {
-		System.out.println("--SMSDao detailSMS : "+recvId);
+	public List<SMS> detailSMS(String sendId, String recvId) {
+		System.out.println("----SMSDao detailSMS : "+recvId);
 		
 		SqlSession session = getSession();
 		SMS sms = new SMS();

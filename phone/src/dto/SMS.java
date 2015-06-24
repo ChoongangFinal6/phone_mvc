@@ -3,8 +3,8 @@ package dto;
 import java.util.Date;
 
 public class SMS {
-	int sendId;
-	int recvId;
+	String sendId;
+	String recvId;
 	String content;
 	Date sendDate;
 	String image;
@@ -21,16 +21,16 @@ public class SMS {
 	public void setNumOfNew(int numOfNew) {
 		this.numOfNew = numOfNew;
 	}
-	public int getSendId() {
+	public String getSendId() {
 		return sendId;
 	}
-	public void setSendId(int sendId) {
+	public void setSendId(String sendId) {
 		this.sendId = sendId;
 	}
-	public int getRecvId() {
+	public String getRecvId() {
 		return recvId;
 	}
-	public void setRecvId(int recvId) {
+	public void setRecvId(String recvId) {
 		this.recvId = recvId;
 	}
 	public String getContent() {

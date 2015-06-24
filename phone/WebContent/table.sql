@@ -36,6 +36,7 @@ birthDate date not null,
 gender varchar2(5) not null,
 address varchar2(150) not null
 );
+
 insert into HMember  values('010-1111-1111','1','1q2w3e','윤동혁',sysdate,'1','강남');
 drop table HMember;
 select * from HMember;
