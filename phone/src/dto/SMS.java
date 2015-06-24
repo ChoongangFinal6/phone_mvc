@@ -9,8 +9,18 @@ public class SMS {
 	Date sendDate;
 	String image;
 	String read;	
-	String delete;
+	String deleted;
 	
+	// 정보전달용 멤버변수
+	int numOfNew;
+	
+	
+	public int getNumOfNew() {
+		return numOfNew;
+	}
+	public void setNumOfNew(int numOfNew) {
+		this.numOfNew = numOfNew;
+	}
 	public int getSendId() {
 		return sendId;
 	}
@@ -47,11 +57,11 @@ public class SMS {
 	public void setRead(String read) {
 		this.read = read;
 	}
-	public String getDelete() {
-		return delete;
+	public String getDeleted() {
+		return deleted;
 	}
-	public void setDelete(String delete) {
-		this.delete = delete;
+	public void setDeleted(String delete) {
+		this.deleted = delete;
 	}
 	
 	

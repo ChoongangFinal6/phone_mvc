@@ -12,7 +12,7 @@
 		<jsp:include page="../member/memberInfo.jsp"></jsp:include>
 	</c:if>
 	 <c:if test="${sessionScope.id == null || sessionScope.id == ''}">
-	<jsp:include page="../member/login.jsp"></jsp:include>
+		<jsp:include page="../member/login.jsp"></jsp:include>
 	</c:if>
 </body>
 </html>

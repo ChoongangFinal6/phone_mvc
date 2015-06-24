@@ -11,21 +11,21 @@ import service.CommandProcess;
 import dao.device.DeviceDao;
 import dto.SMS;
 
-public class CommAction implements CommandProcess {
+public class SMSRecvAction implements CommandProcess {
 	
 	
 	
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("CommAction --");
+		System.out.println("-SMSRecvAction");
 		
 		//int id = Integer.parseInt(request.getParameter("id"));
-		int id = 1111;
+		int recvId = 2222;
 		int newMsg = 0;
 		DeviceDao dd = DeviceDao.getInstance();
-		List<SMS> smsList = dd.getNewSMS(id);
-		request.setAttribute("smsList", smsList);
-		System.out.println(smsList.get(0).getContent() );
+		newMsg = dd.getNewSMS(recvId);
+		request.setAttribute("newMsg", newMsg);
+		
 		return "device/notify.jsp";
 	}
 

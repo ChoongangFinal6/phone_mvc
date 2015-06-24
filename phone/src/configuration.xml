@@ -3,10 +3,9 @@
 <configuration>
 	<properties resource="dbconnect.properties" />
 	<typeAliases>
-	
 		<typeAlias type="dto.PersonInfo" alias="PersonInfo" />
 		<typeAlias type="dto.HMember" alias="HMember" />
-	
+		<typeAlias type="dto.SMS" alias="SMS" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -22,6 +21,6 @@
 	<mappers>
 		<mapper resource="PersonInfo.xml" />
 		<mapper resource="HMember.xml" />
-		
+		<mapper resource="SMS.xml" />
 	</mappers>
 </configuration>
