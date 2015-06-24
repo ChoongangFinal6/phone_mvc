@@ -20,10 +20,11 @@ public class JoinProAction implements CommandProcess {
 			 String name = request.getParameter("name");
 			 String password = request.getParameter("password");
 			 String birthDate = request.getParameter("birthDate");
+			 
 			 birthDate = birthDate.substring(0, 10);
 			 System.out.println("birthDate:"+birthDate);
 			/* System.out.println("JoinProAction date - " + request.getParameter("birthDate"));*/
-			 String gender = request.getParameter("gender");
+			 String gender = request.getParameter("gen");
 			 
 			 String post1 = request.getParameter("post1");
 			 String post2 = request.getParameter("post2");
