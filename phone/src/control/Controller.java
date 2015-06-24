@@ -68,12 +68,14 @@ public class Controller extends HttpServlet {
 		String view = null;
 	    CommandProcess com = null;
 	    try {	String command = request.getRequestURI();
-			System.out.println(command);  // /ch15/message.do
+			System.out.println("command: " + command);  // /ch15/message.do
 			//	System.out.println(request.getContextPath()); // /ch15
 			//	System.out.println(command.indexOf(request.getContextPath()));  // 0
 	       //  if (command.indexOf(request.getContextPath()) == 0) {
 	              command = command.substring(request.getContextPath().length());
+	              System.out.println("command2: " + command);
 	         // }
+	              
 	          com = (CommandProcess)commandMap.get(command);  
 	          view = com.requestPro(request, response);
 	    } catch(Throwable e) { throw new ServletException(e); }
@@ -82,6 +84,7 @@ public class Controller extends HttpServlet {
 	    RequestDispatcher dispatcher;
 	    request.setAttribute("viewPage", view);
 	    dispatcher=request.getRequestDispatcher("/template/index.jsp");
+
 	    dispatcher.forward(request, response);
 	}
 }

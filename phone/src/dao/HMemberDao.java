@@ -102,20 +102,51 @@ public class HMemberDao {
 		int result = 0;
 		SqlSession session = null;
 		session = getSession();
-		System.out.println("dao id :" + id);
+		/*System.out.println("dao id :" + id);*/
 		String chkid = "";
 		chkid = (String) session.selectOne("HMember.idchk",id);
 		System.out.println("chkid:"+chkid);
 		if(chkid==null){
 			result = 0;
-		}else if(chkid.equals("")){
-			result = 0;
+		}else if(chkid.equals("")){ //혹시 모르니까 ""을 해준다. 값이 없고 형태 , " "값은 있고 형태도 있다.  
+			result = 0; 
 		}else{
 			result = 1;
 		}
 	
 		session.close();
 		return result;
+	}
+    // 로그인
+
+	public int loginchk(HMember hm) {
+		System.out.println("Dao loginchk :" + hm.getId());
+		
+		int result = 0;
+		SqlSession session = null;
+		session = getSession();
+		String password = (String) session.selectOne("HMember.loginchk",hm.getId());
+		System.out.println("pass :" + password);
+		
+		if(password==null||password==""){
+			result = -1;	// id없는경우	
+		} else if( password.equals(hm.getPassword()) ){ 
+			result = 1;		// 패스워드일치
+		} else{
+			result = 0;		// 패스워드 불일치
+		}
+		
+		return result;
+	}
+
+	public String namechk(String id) {
+		String name = null;
+		SqlSession session = null;
+		session = getSession();
+		
+		name = (String) session.selectOne("Hmember.namechk",id);
+		
+		return name;
 	}
 
 }

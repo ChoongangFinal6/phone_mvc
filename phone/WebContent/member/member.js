@@ -20,6 +20,7 @@ $(function() {
 		}
 	});
 });
+
 $(function() {
 	$('#id').keyup(function() {
 		var idVal = $('#id').val();
@@ -33,11 +34,12 @@ $(function() {
 				var start = text.indexOf("<!-- start of contents -->") + 28;
 				var end = text.indexOf("<!-- end of contents -->");
 				var text2 = text.substring(start, end);
-				if(text2 ==1){
-					$('#msg').css('display', 'block');
+				if(text2==1){
+					$('#msg1').css('display', 'block');
+					$('#msg2').css('display', 'none');
 				}else{
-					$('#msg').css('display', 'none');
-					
+					$('#msg1').css('display', 'none');
+					$('#msg2').css('display', 'block');					
 				}
 				
 			}

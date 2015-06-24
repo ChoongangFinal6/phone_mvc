@@ -15,11 +15,17 @@
 	<select id="max" resultType="integer">
 		select NVL(max(hNo),0) from HMember 
 	</select>
-    <select id="insert" parameterType="HMember">
+    <insert id="insert" parameterType="HMember">
         insert into HMember(hNo,id,name,password,birthDate,gender,address) 
         values(#{hNo},#{id},#{name},#{password},#{birthDate},#{gender},#{address})
-    </select>
+    </insert>
     <select id="idchk" parameterType="String" resultType="String">
         select id from HMember where id=#{id}
+    </select>
+    <select id="loginchk" parameterType="String" resultType="String">
+        select password from HMember where id=#{id}
+    </select>
+    <select id="namechk" parameterType="String" resultType="String">
+        select name from HMember where id=#{id}
     </select>
 </mapper>
