@@ -11,6 +11,10 @@ import service.CommandProcess;
 import dao.device.DeviceDao;
 import dto.SMS;
 
+/**
+ * @author 우진
+ *	새로온 메세지가 몇 개인지 조회
+ */
 public class SMSRecvAction implements CommandProcess {
 	
 	
@@ -19,11 +23,9 @@ public class SMSRecvAction implements CommandProcess {
 			HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("-SMSRecvAction");
 		
-		//int id = Integer.parseInt(request.getParameter("id"));
-		int recvId = 2222;
-		int newMsg = 0;
+		String recvId = (String) request.getSession().getAttribute("id");
 		DeviceDao dd = DeviceDao.getInstance();
-		newMsg = dd.getNewSMS(recvId);
+		int newMsg = dd.getNewSMS(recvId);
 		request.setAttribute("newMsg", newMsg);
 		
 		return "device/notify.jsp";

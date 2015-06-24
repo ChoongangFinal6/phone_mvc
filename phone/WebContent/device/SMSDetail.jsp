@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<h3>${smsList.get(0).sendId}와의 대화목록</h3>
+	<h3>${sendId}와의 대화목록</h3>
 	
 	<table>
 		<c:forEach var="sms" items="${ smsList }">
@@ -40,8 +40,9 @@
 		</c:forEach>
 	</table>
 	<div style="position: absolute; bottom: 50px;">
-	<form action="sendMsg.do?">
-		<input type="text" name="newMsg" required="required" style="width: 100%; padding:5px;"><button style="padding:5px;">전송</button>
+	<form action="sendMsg.do">
+		<input type="text" name="targetId" value="${sendId}" hidden="true">
+		<input type="text" name="content" required="required" style="width: 100%; padding:5px;"><button style="padding:5px;">전송</button>
 	</form>
 	</div>
 </body>

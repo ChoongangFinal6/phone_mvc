@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>SMS List</h2>
+	<h2>대화 목록</h2>
 
 	<table>
 		<c:forEach var="sms" items="${ smsList }">
 			<tr>
 				<td>
-					<a href='readSMS.do?sendId=${sms.sendId}&recvId=${sms.recvId}'>
+					<a href='detailSMS.do?sendId=${sms.sendId}'>
 					${sms.sendId} / [${sms.numOfNew}] <br>
 					${sms.content} <fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/><br>				
 					</a>

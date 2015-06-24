@@ -19,12 +19,12 @@
 	</select>
 
 <!-- listNewSenders : 새 메세지를 보낸 발신자들의 리스트를 조회 -->	
-	<select id="listNewSenders" parameterType="integer" resultMap="ResultMap">
+	<select id="listNewSenders" parameterType="String" resultMap="ResultMap">
 		select distinct sendId from SMS where recvId=#{recvId} and read='0'
 	</select>
 
 <!-- listNewSMS : 새 메세지들을 모두 조회 -->	
-	<select id="listNewSMS" parameterType="integer" resultMap="ResultMap">
+	<select id="listNewSMS" parameterType="String" resultMap="ResultMap">
 		select * from SMS where recvId=#{recvId} and deleted='0' and read='0'
 	</select>
 
