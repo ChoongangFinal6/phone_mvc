@@ -4,8 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
 	function timer_start() { 
 		tcounter = 0;
@@ -22,16 +21,20 @@
 	}
 	
 	function getState(){
-		//location.href='comm.do';
-		var params = "id=010";
-		//new ajax.xhr.Request('comm.do', params, showNotify, 'POST');
-		$.ajax({
-			url : 'comm.do', 
+		var recvId = '01011112222';
+		var pass = '1234';
+		var params = 'recvId=' + recvId + '&pass=' + pass;
+
+		$.ajaxSetup( {
+			type : 'post',
+			url : 'smsRecv.do',
 			dataType : 'html', 
 			success : function(data){
-				$('#result').html($(data));		
+				$('#result').html($(data));	
 			}
 		});
+		
+		$.ajax({ data:params}); 
 	}
 	
 
@@ -40,12 +43,12 @@
 
 <body onLoad="timer_start()">
 
-	<table border="1" width='300'>
+	<table border="1">
 		<tr>
-			<td><span id="timer_s"></span></td>
+			<td style="width: 300px; height: 50px"><span id="timer_s"></span></td>
 		</tr>
 		<tr>
-			<td><span id="result"></span></td>
+			<td style="height: 300px"><span id="result"></span></td>
 		</tr>
 	</table>
 

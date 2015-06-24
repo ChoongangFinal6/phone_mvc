@@ -8,13 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.CommandProcess;
 
-public class DeviceAction implements CommandProcess {
+public class SMSSendAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DeviceAction");
-		return "device/device_home.jsp";
+		System.out.println("SMSSendAction");
+		
+		
+		return null;
 	}
-
+	
 }

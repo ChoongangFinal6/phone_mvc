@@ -10,13 +10,23 @@
 		<result column="sendDate" property="sendDate"/>
 		<result column="image" property="image"/>
 		<result column="read" property="read"/>
-		<result column="delete" property="delete"/>
+		<result column="deleted" property="deleted"/>
 	</resultMap>
 	
 <!-- selectSMS -->
 
-	<select id="selectSMS" parameterType="integer" resultMap="ResultMap">
-		select * from SMS where read='0'
+	<select id="newSMS" parameterType="integer" resultType="integer">
+		select count(*) from SMS where recvId=#{recvId} and read='0'
 	</select>
 
+<!-- listNewSenders : 새 메세지를 보낸 발신자들의 리스트를 조회 -->	
+	<select id="listNewSenders" parameterType="integer" resultMap="ResultMap">
+		select distinct sendId from SMS where recvId=#{recvId} and read='0'
+	</select>
+	
+	<select id="listNewSMS" parameterType="integer" resultMap="ResultMap">
+		select * from SMS where recvId=#{recvId} and deleted='0' and read='0'
+	</select>
+
+	
 </mapper>

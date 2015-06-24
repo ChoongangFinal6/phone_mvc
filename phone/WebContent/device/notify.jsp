@@ -12,10 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="sms" items="${ smsList }">
-		발신 : ${ sms.sendId } <br>
-		수신 : ${ sms.recvId } <br>
-		내용 : ${ sms.content } <br>
-	</c:forEach>
+	
+	<div id="status_sms">
+		<a href="listSMS.do?recvId=${recvId}"> ${newMsg}</a>
+		<%-- <c:if test="${smsList.size() >= 1}">
+			0
+		</c:if>
+		<c:if test="${smsList.size() == 0}">
+			0
+		</c:if> --%>
+	</div>
 </body>
 </html>
