@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${id}로그인 하셨음<a href="member/logout.jsp">[로그아웃]</a>
-	
+로그아웃
 </body>
 </html>

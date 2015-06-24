@@ -70,11 +70,10 @@
 		<div>
 			<div class="title_name">성별(*)</div>
 			<span class="ab"></span> 
-			<select name="gender">
-			<option value="1">남자</option>
-			<option value="2">여자</option>
+			남자<input type="radio" value="1" name="gen">
+			여자<input type="radio" value="2" name="gen">
 			</select>
-		</div>
+		</div> 
 		<div>
 		    <div class="title_name">주소(*)</div>
 			<span class="ab"></span> 
