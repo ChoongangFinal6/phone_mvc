@@ -1,10 +1,13 @@
 @CHARSET "UTF-8";
 
-#name1 {width: 70px; float: left;}
-#date1 {width: 70px; float: left;}
-#gender1 {width: 70px; float: left;}
+.title_name {width: 70px; float: left;}
+
 #back {position: relative; margin-left:  100px auto;}
 #back0 {background-color:#f95a33; width:400px; height: 100px; color: white;}
 #back1 {border: 1px solid #f95a33; width:400px; height: 70px;}
 #form {al}
 .abc {margin: 0 30px 0 30px;}
+.ab {margin: 0 70px 0 30px;}
+.addr {margin-left: 100px; float: left}
+.addr1 {margin-left: 170px;}
+.fix {position:absolute;}

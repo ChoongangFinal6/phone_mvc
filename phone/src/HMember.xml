@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HMember">
+	<resultMap type="HMember" id="HMember">
+		<result property="hNo" column="hNo" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="birthDate" column="birthDate" />
+		<result property="gender" column="gender" />
+		<result property="address" column="address" />
+	</resultMap>
+
+	<select id="max" resultType="integer">
+		select NVL(max(hNo),0) from HMember 
+	</select>
+    <select id="insert" parameterType="HMember">
+        insert into HMember(hNo,id,name,password,birthDate,gender,address) 
+        values(#{hNo},#{id},#{name},#{password},#{birthDate},#{gender},#{address})
+    </select>
+    <select id="idchk" parameterType="String" resultType="String">
+        select id from HMember where id=#{id}
+    </select>
+</mapper>

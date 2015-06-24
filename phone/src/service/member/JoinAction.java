@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-import dao.MemberDao;
+import dao.HMemberDao;
 import dto.PersonInfo;
 import service.CommandProcess;
 
@@ -28,14 +28,16 @@ public class JoinAction implements CommandProcess {
 	
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("===============1");
 		       request.setCharacterEncoding("utf-8");
 		        String name = request.getParameter("name");
 				String gender = request.getParameter("gender");
 				String birthdate = request.getParameter("birthdate");
 				
-			
+		
 				
-	      MemberDao md = MemberDao.getInstance(); 			
+	      HMemberDao md = HMemberDao.getInstance(); 			
 		  PersonInfo pi = new PersonInfo();
 		  pi.setName(name);
 		  pi.setGender(gender);

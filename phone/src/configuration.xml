@@ -5,6 +5,7 @@
 	<typeAliases>
 	
 		<typeAlias type="dto.PersonInfo" alias="PersonInfo" />
+		<typeAlias type="dto.HMember" alias="HMember" />
 	
 	</typeAliases>
 	<environments default="development">
@@ -20,6 +21,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="PersonInfo.xml" />
+		<mapper resource="HMember.xml" />
 		
 	</mappers>
 </configuration>

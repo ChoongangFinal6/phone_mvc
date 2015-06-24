@@ -27,3 +27,22 @@ insert into person_info  values('장예원','1994-12-06','2');
 insert into person_info  values('장예원','1995-12-06','2');
 
 
+create table HMember (
+id varchar2(20) primary key,
+hNo number not null,
+password varchar2(20) not null,
+name varchar2(20) not null,
+birthDate date not null,
+gender varchar2(5) not null,
+address varchar2(150) not null
+);
+insert into HMember  values('010-1111-1111','1','1q2w3e','윤동혁',sysdate,'1','강남');
+drop table HMember;
+select * from HMember;
+
+
+CREATE SEQUENCE hNo start with 1;
+drop sequence hNo;
+
+
+select NVL(max(hNo),0) from HMember; 

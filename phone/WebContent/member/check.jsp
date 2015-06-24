@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="aa.jsp"%>
-<!DOCTYPE html PUBLIC>
+<%@ include file="../template/aa.jsp"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,17 +23,17 @@
 	    <div id="back0"><br>회원을 가입하시려면 반드시 본인 인증을 필요로 합니다. 아래 정보를 기입하여 본인 인증을 확인 하시기 바랍니다.</div>
 	    <div id="back1">
 		<div>
-			<div id="name1">이름</div>
-			<span class="abc"></span> 
+			<div class="title_name">이름</div>
+			<span class="abc"></span>  
 			<input type="text" name="name">
 		</div>
 		<div>
-			<div id="date1">생년월일</div>
-			<span class="abc"></span> 
+			<div class="title_name">생년월일</div>
+			<span class="abc"></span>  
 			<input type="date" name="birthdate">
 		</div>
 		<div>
-			<div id="gender1">성별</div>
+			<div class="title_name">성별</div>
 			<span class="abc"></span> 
 			<select name="gender">
 			<option value="1">남자</option>

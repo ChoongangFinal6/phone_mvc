@@ -12,4 +12,7 @@
 		select * from person_info where name = #{name} 
 	</select>
 	
+	
+	
+	
 </mapper>
