@@ -13,8 +13,7 @@
 		<result column="deleted" property="deleted"/>
 	</resultMap>
 	
-<!-- selectSMS -->
-
+<!-- selectSMS : 새로온 메세지의 수를 카운트 -->
 	<select id="newSMS" parameterType="integer" resultType="integer">
 		select count(*) from SMS where recvId=#{recvId} and read='0'
 	</select>
@@ -23,10 +22,22 @@
 	<select id="listNewSenders" parameterType="integer" resultMap="ResultMap">
 		select distinct sendId from SMS where recvId=#{recvId} and read='0'
 	</select>
-	
+
+<!-- listNewSMS : 새 메세지들을 모두 조회 -->	
 	<select id="listNewSMS" parameterType="integer" resultMap="ResultMap">
 		select * from SMS where recvId=#{recvId} and deleted='0' and read='0'
 	</select>
 
+<!-- detailSMS : 특정 발신자와 주고 받은 문자를 모두 조회 -->
+	<select id="detailSMS" parameterType="SMS" resultMap="ResultMap">
+		select * from SMS 
+		where (recvId=#{recvId} and sendId=#{sendId}) or (recvId=#{sendId} and sendId=#{recvId}) 
+	</select>
 	
+<!-- setRead : 읽은 문자들을 '읽음'상태로 설정 -->	
+	<update id="setRead" parameterType="SMS">
+		update SMS
+		set read='1'
+		where recvId=#{recvId} and sendId=#{sendId}
+	</update>
 </mapper>

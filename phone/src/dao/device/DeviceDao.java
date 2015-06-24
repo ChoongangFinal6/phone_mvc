@@ -56,32 +56,34 @@ public class DeviceDao {
 		List<SMS> senderList = session.selectList("SMS.listNewSenders", recvId);
 		List<SMS> msgList = session.selectList("SMS.listNewSMS", recvId);
 
-
 		for(int i = 0; i<senderList.size(); i++){
 			int num = 0;
 			for(SMS msg : msgList){
 				if(senderList.get(i).getSendId()==msg.getSendId()){
 					num++;
+					senderList.set(i, msg);
 					senderList.get(i).setNumOfNew(num);
-					senderList.get(i).setContent(msg.getContent());
-					senderList.get(i).setSendDate(msg.getSendDate());
 				}
 			}
 			System.out.println("발신자:"+senderList.get(i).getSendId() +
 					", 새문자수:"+senderList.get(i).getNumOfNew() +
 					", 내용:"+senderList.get(i).getContent());
 		}
-
-		session.close();
-		
+		session.close();		
 		return senderList;
 	}
 
 	// 선택한 발신자와의 대화목록 조회
-	public List<SMS> readSMS(int sendId) {
+	public List<SMS> detailSMS(int sendId, int recvId) {
+		System.out.println("--SMSDao detailSMS : "+recvId);
 		
-		
-		return null;
+		SqlSession session = getSession();
+		SMS sms = new SMS();
+		sms.setSendId(sendId);
+		sms.setRecvId(recvId);
+		List<SMS> smsList = session.selectList("SMS.detailSMS", sms);	// 조회
+//		int result = session.update("SMS.setRead", sms); 	// 조회된 문자들을 '읽음(1)'상태로 설정
+		return smsList;
 	}
 	
 }

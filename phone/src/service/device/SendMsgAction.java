@@ -1,4 +1,4 @@
-package service;
+package service.device;
 
 import java.io.IOException;
 
@@ -6,13 +6,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HiAction implements CommandProcess {
+import service.CommandProcess;
+
+public class SendMsgAction implements CommandProcess{
 
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		return "/member/abcd.jsp";
+		
+		return null;
 	}
 
 }

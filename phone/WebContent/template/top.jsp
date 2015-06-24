@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	if(${id==null})
 	<jsp:include page="../member/login.jsp"></jsp:include>
 </body>
 </html>

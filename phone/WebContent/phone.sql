@@ -20,7 +20,11 @@ INSERT INTO sms (sendId, recvId, content, read) values (3333,2222,'content 3333,
 
 
 select * from sms;
+select * from sms where (recvId=2222 and sendId=1111) or (recvId=1111 and sendId=2222);
 select count(*) from SMS;
 select count(*) from SMS where recvId=2222 and read='0';
 select distinct sendId from SMS where recvId=2222 and read='0';
 select * from SMS where recvId=2222 and deleted='0' and read='0';
+update SMS
+	set read='1'
+	where recvId=2222 and sendId=1111;
