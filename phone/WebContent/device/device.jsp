@@ -6,82 +6,59 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-html, body {
+
+#device_body {
 	width: 100%;
-	height:100%
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
-html {
+#device_Header {
 	width: 100%;
-	height: 100%
-}
-
-body {
-	width: 100%;
-	height: 100%
-}
-
-#header {
-	width: 100%;
-	height: 50px;
-	position: relative;
+	height: 30px;
+	position: absolute;
 	z-index: 20;
-	overflow: hidden;
-	background-color: #fcc
+	background-color: #fcc;
 }
 
-#container {
+#device_Section {
 	width: 100%;
 	min-height: 100%;
-	position: relative;
-	z-index: 10;
-	margin: -50px 0 -50px 0;
-	background-color: #FF6
+	position: absolute;
+	top : 30px;
+	margin: 0 0 0 0;
+	background-color: #ffeeee;
 }
 
-.contents {
-	padding-top: 50px
-}
-
-#footer {
-	width: 100%;
-	height: 50px;
-	position: relative;
-	z-index: 20;
-	overflow: hidden;
-	background-color: #CCF
+#device_Article {
+	height : auto;
+	background-color: #aaaaaa;
 }
 </style>
 </head>
 
-<body>
+<body id="device_body">
 
-	<div id="header">
+  	<div id="device_Header">
 		<jsp:include page="device_top.jsp" />
 	</div>
-	<div id="container">
-		<div class="contents">
+	<div id="device_Section">
+		<div id="device_Article">
 			<jsp:include page="${viewPage}" />
 		</div>
 	</div>
-	<div id="footer">
-		<jsp:include page="device_bottom.jsp" />
-	</div>
-	
-	<%-- 
-	<header class="device_Header">
+ 
+ <%-- 
+	<header id="device_Header">
 		<jsp:include page="device_top.jsp" />
 	</header>
 	
-	<section>
-		<article id="deviceArcticle">
+	<div id="device_Section">
+		<article id="device_Article">
 			<jsp:include page="${viewPage}" />
-			뷰페이지 : ${viewPage}
 		</article>
-	</section>
-	
-	<footer id="devicefooter">
-		<jsp:include page="device_bottom.jsp" />
-	</footer> --%>
+	</div>
+
+ --%>
 </body>
 </html>

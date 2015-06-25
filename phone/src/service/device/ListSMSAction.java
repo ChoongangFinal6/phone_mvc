@@ -20,7 +20,7 @@ public class ListSMSAction implements CommandProcess{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("--ListSMSAction : ");
+		System.out.println("  ListSMSAction : ");
 		
 		String recvId = (String) request.getSession().getAttribute("id");
 		DeviceDao ddao = DeviceDao.getInstance();

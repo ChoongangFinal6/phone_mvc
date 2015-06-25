@@ -9,7 +9,7 @@
 	function runDevice(){
 		// window.open(url, windowName, windowFeatures, optionalArg4)
 		var deviceWindow = window.open("device/device.do", "deviceWindow", 
-				"menubar=no, titlebar=yes, status=no, scrollbars=no, resizable=no, toolbar=no, " +
+				"menubar=no, titlebar=yes, status=no, toolbar=no, " +
 				"width=300, height=600, top=0, left=600");	
 	}
 </script>

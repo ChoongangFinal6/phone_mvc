@@ -40,4 +40,9 @@
 		set read='1'
 		where recvId=#{recvId} and sendId=#{sendId}
 	</update>
+
+<!-- sendNewMsg : 문자 전송 -->
+	<insert id="sendNewMsg" parameterType="SMS">
+		insert into SMS (sendId, recvId, content) values (#{sendId}, #{recvId}, #{content}) 
+	</insert>	
 </mapper>

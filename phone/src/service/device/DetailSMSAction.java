@@ -22,14 +22,14 @@ public class DetailSMSAction implements CommandProcess{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("--DetailSMSAction : ");
+		System.out.print("  DetailSMSAction : ");
 		String id = (String) request.getSession().getAttribute("id");		
 		String sendId = request.getParameter("sendId");
 	
 		
 		DeviceDao ddao = DeviceDao.getInstance();
 		List<SMS> smsList = ddao.detailSMS(sendId, id);
-		System.out.println("대화목록 : " + smsList.size());
+		System.out.println("대화목록-" + smsList.size());
 		
 		request.setAttribute("id", id);
 		request.setAttribute("sendId", sendId);

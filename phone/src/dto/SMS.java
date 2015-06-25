@@ -14,6 +14,12 @@ public class SMS {
 	// 정보전달용 멤버변수
 	int numOfNew;
 	
+	public SMS() {}
+	public SMS(String sendId, String recvId, String content) {
+		this.sendId = sendId;
+		this.recvId = recvId;
+		this.content = content;
+	}
 	
 	public int getNumOfNew() {
 		return numOfNew;
