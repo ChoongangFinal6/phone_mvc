@@ -6,8 +6,12 @@
 #back0 {background-color:#f95a33; width:400px; height: 100px; color: white;}
 #back1 {border: 1px solid #f95a33; width:400px; height: 70px;}
 #form {al}
+#phone{width: 30px; height: 40px; margin: -1px -5px -1px -5px;}
+#succ{color: green;}
+.fail{color: red;}
 .abc {margin: 0 30px 0 30px;}
 .ab {margin: 0 70px 0 30px;}
 .addr {margin-left: 100px; float: left}
 .addr1 {margin-left: 170px;}
+
 /* .fix {position:absolute;} */

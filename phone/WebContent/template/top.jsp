@@ -6,8 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${root}/member/member.css">
 </head>
 <body>
+	<c:if test="${result==1}"><div id="succ">로그인 성공</div></c:if>
+	<c:if test="${result==0}"><div class="fail">비번이 틀림</div></c:if>
+	<c:if test="${result==-1}"><div class="fail">없는 아이디</div></c:if>
 	<c:if test="${sessionScope.id!=null}">
 		<jsp:include page="../member/memberInfo.jsp"></jsp:include>
 	</c:if>
