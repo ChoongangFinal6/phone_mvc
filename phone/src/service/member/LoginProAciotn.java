@@ -16,18 +16,19 @@ public class LoginProAciotn implements CommandProcess {
 	public String requestPro(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("--LoginProAciotn : ");
+		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("password");
 		HttpSession session = request.getSession();
 
 		String name = null;
+		String resultMsg = "";
 		int result = 0;
 		HMemberDao hd = HMemberDao.getInstance();
 		HMember hm = new HMember();
 		hm.setId(id);
 		hm.setPassword(pwd);
-	//	name = hd.namechk(id);
+	/*	name = hd.namechk(id);*/
 		result = hd.loginchk(hm);
 
 		if (result == 1) {
@@ -35,8 +36,9 @@ public class LoginProAciotn implements CommandProcess {
 		}
 		System.out.println("result : " + result);
 		request.setAttribute("result", result);
-
-		return "/member/loginPro.jsp";
+		//request.setAttribute("resultMsg", resultMsg);
+        
+		return "/template/home.jsp";
 	}
 
 }

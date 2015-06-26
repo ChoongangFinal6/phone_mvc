@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
 <script type="text/javascript">
 	function runDevice(){
 		// window.open(url, windowName, windowFeatures, optionalArg4)
@@ -14,10 +15,10 @@
 	}
 </script>
 </head>
+=======
+>>>>>>> f2f8cd8981c94a24f4610023c1db00f61ec2d8a5
 <body>
 
-HOME
-	<button onclick="runDevice()">phone</button>
-
+홈
 </body>
 </html>
