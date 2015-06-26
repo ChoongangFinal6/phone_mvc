@@ -11,7 +11,7 @@
 <body>
 <c:if test="${result==1}">
 <script type="text/javascript">
-alert("${name}님 로그인 되었습니다. ");
+alert("${id}님 로그인 되었습니다. ");
 Location.href= "home.do";
 </script>
 </c:if>
