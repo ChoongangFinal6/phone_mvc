@@ -37,19 +37,47 @@ public class DeviceDao {
 	}
 	
 	// 새로 수신된 문자의 수를 조회
-	public int getNewSMS(String recvId){
-		System.out.print("    Dao newSMS : " + recvId + "에게 온 새 메세지 ");
+	public int getNumOfNew(String userId){
+		System.out.print("    Dao getNumOfNew : " + userId + "에게 온 새 메세지 - ");
 		
 		SqlSession session = getSession();
 		int result = 0;
-		result = (int) session.selectOne("SMS.newSMS", recvId);
+		result = (int) session.selectOne("SMS.getNumOfNew", userId);
 		session.close();
-		System.out.println("result: " + result);
+		System.out.println(result + "개");
 		return result;
 	}
 	
-
-	// 새로 수신된 문자 목록 조회
+	// 대화한 상대방 목록 조회
+	public List<SMS> listAllMsg(String userId){
+		System.out.println("    Dao listAllMsg : ");
+		
+		SqlSession session = getSession();
+		List<SMS> smsList = session.selectList("SMS.listAllMsg", userId);
+		List<String> dialogList = null;
+		for(SMS sms : smsList){
+			// 내게 온 메세지 중 읽지 않은 것들 검사
+			if( sms.getRecvId().equals(userId) && sms.getRead().equals('0')){
+				
+			}
+		}
+		return smsList;
+	}
+	
+	
+	public List<SMS> getDialogList(String userId){
+		System.out.println("    Dao getDialogList : ");
+		
+		SqlSession session = getSession();
+		List<SMS> msgList = session.selectList("SMS.listNewSMS", userId);
+		
+		session.close();
+		return msgList;
+	}
+	
+	
+	
+	// 발신자별로 새 문자 목록 조회
 	public List<SMS> listNewSMS(String recvId){
 		System.out.println("    Dao listSMS : ");
 		
@@ -77,7 +105,7 @@ public class DeviceDao {
 		return senderList;
 	}
 
-	// 선택한 발신자와의 대화목록 조회
+	// 선택한 발신자와의 대화 상세 조회
 	public List<SMS> detailSMS(String sendId, String recvId) {
 		System.out.println("    SMSDao detailSMS : "+recvId);
 		

@@ -8,8 +8,20 @@
 		height:30px;
 		background-color: black;
 		color:white;
-		padding : 0px 20px 0px 10px;
+		padding : 0px 0px 0px 0px;
 	}
+	
+#clock{
+	vertical-align: top;
+	height:30px;
+	font-size: 16pt;
+}
+
+#result {
+	vertical-align: top;
+	margin-left: 20px;
+	height: 30px;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
@@ -36,12 +48,13 @@
 		
 		document.getElementById("clock").innerHTML = h+ ":" + m;	
 
-	 	if(tcounter%8==0){
+	 	if(tcounter%10==0){
 			getState();
 			tcounter=1;
 		}
 	}
 	
+	// 새 문자가 몇 개 와있는지 조회
 	function getState(){
 		var recvId = ${id};
 		var params = 'recvId=' + recvId;
@@ -49,22 +62,52 @@
 		$.ajaxSetup( {
 			type : 'post',
 			url : 'smsRecv.do',
-			dataType : 'html', 
+			dataType : 'text', 
 			success : function(data){
-				$('#result').html($(data).find('#status_sms'));
+				var num = $(data).find('#newMsg').text();
+				if(num>=1){
+					var imgSrc = "<img src='../image/envelop1.png'" +
+						"style='width:25px; height:25px;'>";
+					$('#result').html(imgSrc);
+				}else{
+					
+				}
+				
 			}
 		});
 		
 		$.ajax({ data:params}); 
 	}
 	
+	// 문자 대화 리스트를 조회
+	function getDialogList(){
+		var recvId = ${id};
+		var params = 'recvId=' + recvId;
+		
+		$.ajaxSetup( {
+			type : 'post',
+			url : 'listSMS.do',
+			dataType : 'html', 
+			success : function(data){
+				$('#device_Article').html($(data).find('#chatList'));
+			}
+		});
+		
+		$.ajax({ data:params}); 
+	}
+/* 
+	$('#result').click( function(){
+		alert("1");
+		getDialogList();	
+	});
+ */
 </script>
 </head>
 
 <body onLoad="timer_start()">
 	<div id="topBar">
 		<span id="clock"></span>
-		<a href="listSMS.do?recvId=${recvId}"><span id="result">${newMsg}</span></a>
+		<span id="result" onclick="getDialogList()"></span>
 	</div>
 </body>
 </html>

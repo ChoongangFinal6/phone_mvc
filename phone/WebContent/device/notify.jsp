@@ -1,1 +1,1 @@
-<span id="status_sms">${newMsg}</span>
+<span id="newMSg">${newMsg}</span>

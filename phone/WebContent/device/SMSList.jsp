@@ -6,23 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<h2>대화 목록</h2>
 
-	<table>
-		<c:forEach var="sms" items="${ smsList }">
-			<tr>
-				<td>
-					<a href='detailSMS.do?sendId=${sms.sendId}'>
-					${sms.sendId} / [${sms.numOfNew}] <br>
-					${sms.content} <fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/><br>				
-					</a>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
-	
+<div id="chatList">
+	<div id="lastMsgTitle">대화 목록</div>
+	<c:forEach var="sms" items="${ smsList }">
+		<a href='detailSMS.do?sendId=${sms.sendId}'>
+			<div class="chatEntry">
+				<span>${sms.sendId}</span><span style="float: right;">[${sms.numOfNew}]</span>
+				<div class="lastMsgTitle">${sms.content}</div>
+				<div>
+				<fmt:formatDate type="both" pattern="M월d일 hh:mm"
+					value="${sms.sendDate}" />
+				</div>
+			</div>
+		</a>
+	</c:forEach>
+</div>
 
 </body>
 </html>

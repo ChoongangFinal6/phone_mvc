@@ -4,6 +4,7 @@
 
 <mapper namespace="SMS">
 	<resultMap id="ResultMap" type="SMS" >
+		<result column="smsNo" property="smsNo"/>
 		<result column="sendId" property="sendId"/>
 		<result column="recvId" property="recvId"/>
 		<result column="content" property="content"/>
@@ -13,16 +14,22 @@
 		<result column="deleted" property="deleted"/>
 	</resultMap>
 	
-<!-- selectSMS : 새로온 메세지의 수를 카운트 -->
-	<select id="newSMS" parameterType="integer" resultType="integer">
+<!-- getNumOfNew : 새로온 메세지의 수를 카운트 -->
+	<select id="getNumOfNew" parameterType="integer" resultType="integer">
 		select count(*) from SMS where recvId=#{recvId} and read='0'
+	</select>
+	
+<!-- listAllMsg : 내가 주고 받은 모든 메세지들 조회 -->	
+	<select id="listAllMsg" parameterType="String" resultMap="ResultMap">
+		select * from SMS where (recvId=#{userId} or sendId=#{userId}) and deleted='0'
 	</select>
 
 <!-- listNewSenders : 새 메세지를 보낸 발신자들의 리스트를 조회 -->	
 	<select id="listNewSenders" parameterType="String" resultMap="ResultMap">
 		select distinct sendId from SMS where recvId=#{recvId} and read='0'
 	</select>
-
+	
+	
 <!-- listNewSMS : 새 메세지들을 모두 조회 -->	
 	<select id="listNewSMS" parameterType="String" resultMap="ResultMap">
 		select * from SMS where recvId=#{recvId} and deleted='0' and read='0'
@@ -43,6 +50,6 @@
 
 <!-- sendNewMsg : 문자 전송 -->
 	<insert id="sendNewMsg" parameterType="SMS">
-		insert into SMS (sendId, recvId, content) values (#{sendId}, #{recvId}, #{content}) 
+		insert into SMS (smsNo, sendId, recvId, content) values (seq_sms.nextval, #{sendId}, #{recvId}, #{content}) 
 	</insert>	
 </mapper>

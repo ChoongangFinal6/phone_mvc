@@ -3,6 +3,7 @@ package dto;
 import java.util.Date;
 
 public class SMS {
+	int smsNo;
 	String sendId;
 	String recvId;
 	String content;
@@ -26,6 +27,14 @@ public class SMS {
 	}
 	public void setNumOfNew(int numOfNew) {
 		this.numOfNew = numOfNew;
+	}
+	
+	
+	public int getSmsNo() {
+		return smsNo;
+	}
+	public void setSmsNo(int smsNo) {
+		this.smsNo = smsNo;
 	}
 	public String getSendId() {
 		return sendId;

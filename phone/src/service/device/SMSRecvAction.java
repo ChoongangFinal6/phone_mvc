@@ -25,7 +25,7 @@ public class SMSRecvAction implements CommandProcess {
 		
 		String recvId = (String) request.getSession().getAttribute("id");
 		DeviceDao dd = DeviceDao.getInstance();
-		int newMsg = dd.getNewSMS(recvId);
+		int newMsg = dd.getNumOfNew(recvId);
 		request.setAttribute("newMsg", newMsg);
 		
 		return "device/notify.jsp";
