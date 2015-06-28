@@ -13,7 +13,7 @@ import dto.SMS;
 
 /**
  * @author 장우진
- *	DB에서 수신된 전체 문자를 조회 
+ *	다른 사람과 주고받은 메세지들을 조회해 [대화상대ID, 최근송수신문자내용, 시간, 아직 읽지않은 문자갯수]로 이루어진 리스트를 구성  
  */
 public class ListSMSAction implements CommandProcess{
 
@@ -22,9 +22,10 @@ public class ListSMSAction implements CommandProcess{
 		
 		System.out.println("  ListSMSAction : ");
 		
-		String recvId = (String) request.getSession().getAttribute("id");
+		String userId = (String) request.getSession().getAttribute("id");
 		DeviceDao ddao = DeviceDao.getInstance();
-		List<SMS> smsList = ddao.listNewSMS(recvId);		
+//		List<SMS> smsList = ddao.listNewSMS(recvId);		
+		List<SMS> smsList = ddao.listAllChat(userId);		
 		
 		request.setAttribute("smsList", smsList);
 		return "device/SMSList.jsp";

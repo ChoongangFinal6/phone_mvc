@@ -1,4 +1,6 @@
 @CHARSET "UTF-8";
+a { text-decoration:none }
+a:HOVER {text-decoration: none}
 /********************** 휴대폰 윈도우 관련 css ************************/
 #device_body {
 	width: 100%;
@@ -22,34 +24,45 @@
 	position: absolute;
 	top: 30px;
 	margin: 0 0 0 0;
+	padding: 0 0 0 0;
 }
 
 #device_Article {
 	height: auto;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
 }
 
 /********************** 문자 대화방 목록 관련 css ************************/
 #chatList {
 }
 
-#lastMsgTitle {
+#chatList_Title {
 	width:100%;
 	height: 50px;
 	background-color: #333333;
 	color:white;
 	font-size:15pt;
+	font-weight:bold;
 	position: fixed;
+	margin: 0 0 0 0;
+	padding: 0 0 0 5;
+}
+#lastMsgTitle {
+	
 }
 
-.chatEntry {
+.chatListEntry {
 	width:100%;
-	background-color:#eeeeee;
-	margin : 1 1 1 1;
+	height:60px;
+	background-color: #6E6E6E;
+	margin : 1 0 1 0;
+	padding: 2 10 2 0;
 	white-space:nowrap; 
 	overflow:hidden;
 	text-overflow:ellipsis;
+	color:white;
 }
-
 /********************** 문자 대화 상세보기 관련 css ************************/
 #dialogTitle {
 	position : fixed;
@@ -97,9 +110,11 @@
 
 .talkBubble_L {
 	text-align: left;
+	height: 60px;
 }
 .talkBubble_R {
 	text-align: right;
+	height: 60px;
 }
 
 .tb_Content_L {

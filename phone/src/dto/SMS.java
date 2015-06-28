@@ -79,5 +79,8 @@ public class SMS {
 		this.deleted = delete;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return sendId + "/" +recvId +" : "+ content + ", " + sendDate ;
+	}
 }

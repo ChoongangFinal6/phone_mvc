@@ -16,10 +16,11 @@
 <body>
 	<div id="dialogTitle">${sendId}</div>
 	<div id="dialogContent">
+		<div style="height: 80px;"></div>
 		<c:forEach var="sms" items="${ smsList }">
 			<c:if test="${sms.recvId==id}">
 				<div class="talkBubble_L">
-					<span class="tb_Content_L"><pre>${sms.content}</pre></span>
+					<span class="tb_Content_L">${sms.content}</span>
 					<br>		
 					<span class="tb_Date_L">
 						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/></span>
@@ -28,7 +29,7 @@
 			
 			<c:if test="${sms.sendId==id}">
 				<div class="talkBubble_R">
-					<span class="tb_Content_R"><pre>${sms.content}</pre></span>
+					<span class="tb_Content_R">${sms.content}</span>
 					<br>
 					<span class="tb_Date_R">
 						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/></span>

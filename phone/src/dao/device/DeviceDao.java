@@ -1,6 +1,7 @@
 package dao.device;
 
 import java.io.Reader;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,24 +48,63 @@ public class DeviceDao {
 		System.out.println(result + "개");
 		return result;
 	}
-	
-	// 대화한 상대방 목록 조회
-	public List<SMS> listAllMsg(String userId){
-		System.out.println("    Dao listAllMsg : ");
+/*	
+	// 내가 주고 받은 모든 메세지 조회
+	public List<SMS> allMsg(String userId){
+		System.out.println("    Dao allMsg : " + userId);
 		
 		SqlSession session = getSession();
-		List<SMS> smsList = session.selectList("SMS.listAllMsg", userId);
-		List<String> dialogList = null;
-		for(SMS sms : smsList){
-			// 내게 온 메세지 중 읽지 않은 것들 검사
-			if( sms.getRecvId().equals(userId) && sms.getRead().equals('0')){
-				
-			}
-		}
+		List<SMS> smsList = session.selectList("SMS.allMsg", userId);
+		session.close();
 		return smsList;
 	}
+	*/
+	// 대화방 목록 구성
+	public List<SMS> listAllChat(String userId){
+		System.out.println("    Dao listAllChat : " + userId);
+		
+		SqlSession session = getSession();
+		//List<SMS> allMsgList = session.selectList("SMS.allMsg", userId);	// 모든 문자 조회
+		List<SMS> chatList = session.selectList("SMS.listAllChat", userId);		// 문자를 주고 받았던 상대방ID목록 조회	
+		
+		if(chatList==null ||chatList.size()<0){
+			
+		} else {
+			for( int i = 0; i < chatList.size(); i++) {
+				String otherId = chatList.get(i).getRecvId();
+				System.out.println(    otherId + "와의 최근 문자 조회");
+				SMS temp = new SMS();
+				temp.setRecvId(userId);
+				temp.setSendId(otherId);
+				// 상대방과 주고받은 문자들 중 가장 최근것의 내용 조회
+				chatList.set(i,	(SMS) session.selectOne("SMS.lastMsgWith", temp));
+				// 그 상대방이 보내온 문자중 아직 읽지 않은 메세지의 갯수
+				int numOfNew = (int) session.selectOne("SMS.numOfNewWith", temp);
+				chatList.get(i).setNumOfNew(numOfNew);
+			}
+			// 대화방 리스트를 마지막 메세지의 전송시간을 기준으로 최근순으로 정렬
+			for( int i = 0; i < chatList.size(); i++ ){
+				SMS temp = null;
+				for( int j=i+1; j < chatList.size(); j++ ){
+					if( chatList.get(i).getSendDate().before( chatList.get(j).getSendDate() ) ){
+						temp = chatList.get(j);
+						chatList.set(j, chatList.get(i));
+						chatList.set(i, temp);
+					}
+				}				
+			}	
+		}
+		
+		int k=0;
+		for(SMS temp: chatList){
+			System.out.println(k++ +"_조회 : "+temp );
+		}
+		
+		session.close();
+		return chatList;
+	}
 	
-	
+	/*
 	public List<SMS> getDialogList(String userId){
 		System.out.println("    Dao getDialogList : ");
 		
@@ -75,8 +115,8 @@ public class DeviceDao {
 		return msgList;
 	}
 	
-	
-	
+	*/
+/*	
 	// 발신자별로 새 문자 목록 조회
 	public List<SMS> listNewSMS(String recvId){
 		System.out.println("    Dao listSMS : ");
@@ -104,7 +144,7 @@ public class DeviceDao {
 		session.close();
 		return senderList;
 	}
-
+*/
 	// 선택한 발신자와의 대화 상세 조회
 	public List<SMS> detailSMS(String sendId, String recvId) {
 		System.out.println("    SMSDao detailSMS : "+recvId);
@@ -114,7 +154,7 @@ public class DeviceDao {
 		sms.setSendId(sendId);
 		sms.setRecvId(recvId);
 		List<SMS> smsList = session.selectList("SMS.detailSMS", sms);	// 조회
-//		int result = session.update("SMS.setRead", sms); 	// 조회된 문자들을 '읽음(1)'상태로 설정
+		int result = session.update("SMS.setRead", sms); 	// 조회된 문자들을 '읽음(1)'상태로 설정
 		return smsList;
 	}
 

@@ -8,13 +8,15 @@
 		height:30px;
 		background-color: black;
 		color:white;
-		padding : 0px 0px 0px 0px;
+		padding : 0 0 0 0;
 	}
 	
 #clock{
 	vertical-align: top;
 	height:30px;
-	font-size: 16pt;
+	font-size: 15pt;
+	font-weight: bold;
+	margin-left: 5px; 
 }
 
 #result {
@@ -48,7 +50,7 @@
 		
 		document.getElementById("clock").innerHTML = h+ ":" + m;	
 
-	 	if(tcounter%10==0){
+	 	if(tcounter%5==0){
 			getState();
 			tcounter=1;
 		}
