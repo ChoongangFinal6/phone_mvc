@@ -11,8 +11,7 @@ create table sms (
 	deleted VARCHAR(1) default '0'
 );
 
-CREATE SEQUENCE seq_sms
-	START WITH 1 INCREMENT BY 1 nocache;
+CREATE SEQUENCE seq_sms	START WITH 1 INCREMENT BY 1 nocache;
 
 DROP SEQUENCE seq_sms;	
 	

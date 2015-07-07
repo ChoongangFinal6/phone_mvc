@@ -17,18 +17,6 @@
 			<jsp:include page="${viewPage}" />
 		</div>
 	</div>
- 
- <%-- 
-	<header id="device_Header">
-		<jsp:include page="device_top.jsp" />
-	</header>
-	
-	<div id="device_Section">
-		<article id="device_Article">
-			<jsp:include page="${viewPage}" />
-		</article>
-	</div>
 
- --%>
 </body>
 </html>

@@ -68,8 +68,8 @@
 			success : function(data){
 				var num = $(data).find('#newMsg').text();
 				if(num>=1){
-					var imgSrc = "<img src='../image/envelop1.png'" +
-						"style='width:25px; height:25px;'>";
+					var imgSrc = "<img src='${root}/image/envelop1.png' style='width:25px; height:25px;'>"
+					+ "<img src='${root}/image/"+num+".png' style='width:15px;'>";
 					$('#result').html(imgSrc);
 				}else{
 					

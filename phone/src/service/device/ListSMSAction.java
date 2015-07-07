@@ -24,7 +24,6 @@ public class ListSMSAction implements CommandProcess{
 		
 		String userId = (String) request.getSession().getAttribute("id");
 		DeviceDao ddao = DeviceDao.getInstance();
-//		List<SMS> smsList = ddao.listNewSMS(recvId);		
 		List<SMS> smsList = ddao.listAllChat(userId);		
 		
 		request.setAttribute("smsList", smsList);

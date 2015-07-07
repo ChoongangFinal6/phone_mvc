@@ -92,7 +92,12 @@ public class DeviceDao {
 						chatList.set(i, temp);
 					}
 				}				
-			}	
+			}
+			
+			// 간략표시용으로 문자내용중 일부분만 잘라냄
+			for(SMS sms : chatList){
+				sms.setContent( sms.getContent().substring(0, 20)+"..." );
+			}
 		}
 		
 		int k=0;
