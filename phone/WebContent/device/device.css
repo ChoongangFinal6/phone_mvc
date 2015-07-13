@@ -136,6 +136,7 @@ a:HOVER {text-decoration: none}
 	cursor: pointer;
 	font-size: 10pt;
 	width: 200px;
+	min-height: 30px;
 	margin: 2 2 2 2;
 	padding: 0 10 0 10;
 	word-break:break-all;
@@ -160,6 +161,7 @@ a:HOVER {text-decoration: none}
 	cursor: pointer;
 	font-size: 10pt;
 	width: 200px;
+	min-height: 30px;
 	margin: 2 2 2 2;
 	padding: 0 10 0 10;
 	word-break:break-all;
