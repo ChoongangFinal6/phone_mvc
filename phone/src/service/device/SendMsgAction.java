@@ -17,9 +17,9 @@ public class SendMsgAction implements CommandProcess{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
+		String sendId = (String) request.getSession().getAttribute("id");
 		String targetId = request.getParameter("targetId");
 		String content = request.getParameter("content");
-		String sendId = (String) request.getSession().getAttribute("id");
 		System.out.println("  SendMsgAction : " + targetId + "에게 문자전송");
 		
 		DeviceDao ddao = DeviceDao.getInstance();

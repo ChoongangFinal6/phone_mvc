@@ -48,17 +48,7 @@ public class DeviceDao {
 		System.out.println(result + "개");
 		return result;
 	}
-/*	
-	// 내가 주고 받은 모든 메세지 조회
-	public List<SMS> allMsg(String userId){
-		System.out.println("    Dao allMsg : " + userId);
-		
-		SqlSession session = getSession();
-		List<SMS> smsList = session.selectList("SMS.allMsg", userId);
-		session.close();
-		return smsList;
-	}
-	*/
+
 	// 대화방 목록 구성
 	public List<SMS> listAllChat(String userId){
 		System.out.println("    Dao listAllChat : " + userId);
@@ -96,7 +86,10 @@ public class DeviceDao {
 			
 			// 간략표시용으로 문자내용중 일부분만 잘라냄
 			for(SMS sms : chatList){
+				String content = sms.getContent();
+				if(content.length() > 20){
 				sms.setContent( sms.getContent().substring(0, 20)+"..." );
+				}
 			}
 		}
 		
@@ -109,47 +102,7 @@ public class DeviceDao {
 		return chatList;
 	}
 	
-	/*
-	public List<SMS> getDialogList(String userId){
-		System.out.println("    Dao getDialogList : ");
-		
-		SqlSession session = getSession();
-		List<SMS> msgList = session.selectList("SMS.listNewSMS", userId);
-		
-		session.close();
-		return msgList;
-	}
-	
-	*/
-/*	
-	// 발신자별로 새 문자 목록 조회
-	public List<SMS> listNewSMS(String recvId){
-		System.out.println("    Dao listSMS : ");
-		
-		SqlSession session = getSession();
-		// 새 문자를 보낸 발신자들을 조회
-		List<SMS> senderList = session.selectList("SMS.listNewSenders", recvId);
-		// 모든 새 문자들을 조회
-		List<SMS> msgList = session.selectList("SMS.listNewSMS", recvId);
 
-		// 발신자별로, 읽지않은 문자들의 갯수와 가장 최근에 수신한 문자의 정보를 저장
-		for(int i = 0; i<senderList.size(); i++){
-			int num = 0;
-			for(SMS msg : msgList){
-				if( senderList.get(i).getSendId().equals(msg.getSendId()) ){
-					num++;
-					senderList.set(i, msg);
-					senderList.get(i).setNumOfNew(num);
-				}
-			}
-			System.out.println("     발신자:"+senderList.get(i).getSendId() +
-					", 새문자수:"+senderList.get(i).getNumOfNew() +
-					", 최근내용:"+senderList.get(i).getContent());
-		}
-		session.close();
-		return senderList;
-	}
-*/
 	// 선택한 발신자와의 대화 상세 조회
 	public List<SMS> detailSMS(String sendId, String recvId) {
 		System.out.println("    SMSDao detailSMS : "+recvId);
