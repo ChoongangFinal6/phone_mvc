@@ -1,16 +1,23 @@
 package service.device;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.CommandProcess;
 import dao.device.DeviceDao;
 import dto.SMS;
-import service.CommandProcess;
 
+// 핸드폰 모듈에서의 문자전송 처리
 public class SendMsgAction implements CommandProcess{
 
 	@Override
@@ -38,6 +45,9 @@ public class SendMsgAction implements CommandProcess{
 			request.setAttribute("resultMsg", "전송 실패");
 		}
 		
+		
+		
+        
 		return "device/SMSDetail.jsp";
 	}
 

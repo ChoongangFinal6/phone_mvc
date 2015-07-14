@@ -95,16 +95,22 @@ public class Controller extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher;
-
-		if ((view.split("/"))[0].equals("device")) {
+		String view1 = (view.split("/"))[0];
+		if( view1.equals("device") ){
 			System.out.println("view(Device) : " + view);
 			request.setAttribute("viewPage", "/"+view);
 			dispatcher = request.getRequestDispatcher("device.jsp");
-		} else {
+			dispatcher.forward(request, response);
+		} else if( view1.equals("ext")){
+			System.out.println("외부문자처리");
+			dispatcher = request.getRequestDispatcher("/template/index.jsp");
+			dispatcher.forward(request, response);
+		} else{
 			System.out.println("view : " + view);
 			request.setAttribute("viewPage", view);
 			dispatcher = request.getRequestDispatcher("/template/index.jsp");
+			dispatcher.forward(request, response);
 		}
-		dispatcher.forward(request, response);
+		
 	}
 }
