@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>바텀</div>
+	<div><img alt="" src="../image/bottom.jpg"> </div>
 </body>
 </html>

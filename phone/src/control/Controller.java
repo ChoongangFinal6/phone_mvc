@@ -97,7 +97,7 @@ public class Controller extends HttpServlet {
 		RequestDispatcher dispatcher;
 
 		if ((view.split("/"))[0].equals("device")) {
-			System.out.println("view(Device) : " + view);
+			/*System.out.println("view(Device) : " + view);*/
 			request.setAttribute("viewPage", "/"+view);
 			dispatcher = request.getRequestDispatcher("device.jsp");
 		} else {

@@ -15,35 +15,40 @@
 <body>
 <c:if test="${result <0}">
 <div>실명확인 인증에 실패 했습니다.</div>
-</c:if>  
+</c:if>
+  <div id="check">
 	<h2>개인인증</h2>
-	    <div id="back" >
 	<form action="join.do" method="post">
-	    
-	    <div id="back0"><br>회원을 가입하시려면 반드시 본인 인증을 필요로 합니다. 아래 정보를 기입하여 본인 인증을 확인 하시기 바랍니다.</div>
-	    <div id="back1">
-		<div>
-			<div class="title_name">이름</div>
-			<span class="abc"></span>  
-			<input type="text" name="name">
+	    <div id="back" align="center">
+		    <div id="back0"><br>회원을 가입하시려면 반드시 본인 인증을 필요로 합니다. 아래 정보를 기입하여 본인 인증을 확인 하시기 바랍니다.</div>
+		    <div id="back1">
+				<div class="checkCell">
+					<div class="title_name">이름</div>
+					<div class="inputType">
+						<input type="text" name="name">
+					</div>
+				</div>
+				<div class="checkCell">
+					<div class="title_name">생년월일</div>
+					<div class="inputType">
+						<input type="date" name="birthdate">
+					</div>
+				</div>
+				<div class="checkCell">
+					<div class="title_name">성별</div>
+					<select name="gender">
+						<option value="1">남자</option>
+						<option value="2">여자</option>
+					</select>
+				</div>
+		    </div>
+		    <P> <P> <P> <P> <P>
+			<div>
+				<input type="submit" value="개인인증확인" >
+			</div>
 		</div>
-		<div>
-			<div class="title_name">생년월일</div>
-			<span class="abc"></span>  
-			<input type="date" name="birthdate">
-		</div>
-		<div>
-			<div class="title_name">성별</div>
-			<span class="abc"></span> 
-			<select name="gender">
-			<option value="1">남자</option>
-			<option value="2">여자</option>
-			</select>
-		</div>
-	    </div>
-	    <P> <P> <P> <P> <P>
-		<div><input type="submit" value="개인인증확인" ></div>
 	</form>
-	    </div>
+	    
+  </div>  
 </body>
 </html>

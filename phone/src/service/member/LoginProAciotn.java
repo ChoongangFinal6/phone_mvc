@@ -20,7 +20,7 @@ public class LoginProAciotn implements CommandProcess {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("password");
 		HttpSession session = request.getSession();
-
+        System.out.println("id :"+id);
 		String name = null;
 		String resultMsg = "";
 		int result = 0;
@@ -30,15 +30,20 @@ public class LoginProAciotn implements CommandProcess {
 		hm.setPassword(pwd);
 	/*	name = hd.namechk(id);*/
 		result = hd.loginchk(hm);
-
+		String viewPage ="";
+		
 		if (result == 1) {
 			session.setAttribute("id", id);
+			viewPage = "/template/home.jsp";
+			
+		}else{
+			viewPage = "/member/login.jsp";
 		}
 		System.out.println("result : " + result);
 		request.setAttribute("result", result);
 		//request.setAttribute("resultMsg", resultMsg);
         
-		return "/template/home.jsp";
+		return viewPage;
 	}
 
 }

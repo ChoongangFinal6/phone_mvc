@@ -17,16 +17,20 @@
 </script>
 </head>
 <body>
+
     <c:if test="${id !='010-0000-0000'}">
-	${id}님  <a href="${root}/member/logout.do">[로그아웃]</a>
+	${id}님  <a href="${root}/member/logout.do">[Logout]</a>
 		<button onclick="runDevice()">
 		<img alt="phone" src="${root}/image/phone.jpg" id="phone"></button>
 	</c:if>
+ 
+ <div class="rogintop2">
  <c:if test="${id=='010-0000-0000'}">
-    ${id}님  <a href="${root}/member/logout.do">[로그아웃]</a>
-        <a href="${root}/member/memlist.do">[회원관리]</a>
+    ${id}님  <a href="${root}/member/logout.do">[Logout]</a>
+        <a href="${root}/member/memlist.do">[Manage_M]</a>
 		<button onclick="runDevice()">
 		<img alt="phone" src="${root}/image/phone.jpg" id="phone"></button>
     </c:if> 
+ </div>   
 </body>
 </html>
