@@ -1,11 +1,15 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>    
+<!DOCTYPE html>
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <script type="text/javascript" src="../js/jquery.js"></script>
-   <link rel="stylesheet" href="../css/example.css">
-   <link rel="stylesheet" href="../css/font-awesome.min.css">
-   <script src="../js/jquery.slides.min.js"></script>
+   <c:set var="root" value="${pageContext.request.contextPath }" />
+   <script type="text/javascript" src="${root}/js/jquery.js"></script>
+   <link rel="stylesheet" href="${root}/css/example.css">
+   <link rel="stylesheet" href="${root}/css/font-awesome.min.css">
+   <script src="${root}/js/jquery.slides.min.js"></script>
   
   <title>SlidesJS Standard Code Example</title>
   <meta name="description" content="SlidesJS is a simple slideshow plugin for jQuery. Packed with a useful set of features to help novice and advanced developers alike create elegant and user-friendly slideshows.">
@@ -118,10 +122,10 @@
   <!-- The container is used to define the width of the slideshow -->
   <div class="container">
     <div id="slides">
-      <img src="../img/example-slide-1.jpg" alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
-      <img src="../img/example-slide-2.jpg" alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
-      <img src="../img/example-slide-3.jpg" alt="Photo by: Mike Ranweiler Link: http://www.flickr.com/photos/27874907@N04/4833059991/">
-      <img src="../img/example-slide-4.jpg" alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
+      <img src="${root}/img/example-slide-1.jpg" alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
+      <img src="${root}/img/example-slide-2.jpg" alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
+      <img src="${root}/img/example-slide-3.jpg" alt="Photo by: Mike Ranweiler Link: http://www.flickr.com/photos/27874907@N04/4833059991/">
+      <img src="${root}/img/example-slide-4.jpg" alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
       <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
       <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
     </div>
