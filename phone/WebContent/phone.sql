@@ -15,13 +15,13 @@ CREATE SEQUENCE seq_sms	START WITH 1 INCREMENT BY 1 nocache;
 
 DROP SEQUENCE seq_sms;	
 	
-INSERT INTO sms (smsNo, sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-1111','010-0000-2222','msg from 1111 to 2222 abcdefg', '0', '2015-06-01');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-1111','010-0000-2222','msg from 1111 to 2222 abcdefg', '0', '2015-06-02');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-1111','010-0000-2222','msg from 1111 to 2222 abcdefg', '1', '2015-06-03');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-1111','010-0000-2222','msg from 1111 to 2222 abcdefg', '1', '2015-06-04');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-0000-1111','msg from 2222 to 1111 abcdefg', '0', '2015-06-05');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-0000-1111','msg from 2222 to 1111 abcdefg', '1', '2015-06-06');
-INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-0000-3333','msg from 2222 to 3333 abcdefg', '0', '2015-06-07');
+INSERT INTO sms (smsNo, sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '1588-0882','010-0000-2222','안녕하세요. 전화한통화로 대출가능여부 조회 가능!', '0', '2015-06-01');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '1588-0882','010-0000-2222','대출 상담 안내 1588-0882', '0', '2015-06-02');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-5432-1234','010-0000-2222','abcdefghijklmnop', '1', '2015-06-03');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-5432-1234','010-0000-2222','message send test!', '1', '2015-06-04');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '070-5651-8282','010-0000-2222','무료 샘플을 신청해 사용해보세요!', '0', '2015-06-05');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-5432-1234','msg from 2222 to 1111 abcdefg', '1', '2015-06-06');
+INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-5432-1234','msg from 2222 to 3333 abcdefg', '0', '2015-06-07');
 INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-2222','010-0000-3333','msg from 2222 to 3333 abcdefg', '1', '2015-06-08');
 INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-3333','010-0000-2222','msg from 3333 to 2222 abcdefg', '0', '2015-06-09');
 INSERT INTO sms (smsNo,sendId, recvId, content, read, sendDate) values (seq_sms.NEXTVAL, '010-0000-3333','010-0000-2222','msg test qwerttyrtyertyeruter', '1', '2015-06-10');

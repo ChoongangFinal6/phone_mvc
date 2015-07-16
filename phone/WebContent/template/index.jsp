@@ -8,19 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <div style="text-align: center;" >
+    <div style="margin: 0 auto; width: 960px; ">
 	<header>
 		<jsp:include page="top.jsp" />
 	</header>
-	
-	<section>
+	<section style="height: 550px;">
 		<article>
 			<jsp:include page="${viewPage}" />
 			<%-- ${viewPage} --%>
 		</article>
 	</section>
-	
 	<footer>
 		<jsp:include page="bottom.jsp" />
 	</footer>
+    </div>
+    </div>
+   
 </body>
 </html>

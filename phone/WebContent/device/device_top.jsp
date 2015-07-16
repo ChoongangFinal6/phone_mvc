@@ -30,7 +30,7 @@
 
 	function timer_start() { 
 		tcounter = 0;
-		t1 = setInterval(timer, 1000);
+		t1 = setInterval(timer, 100);
 	}
 	
 	// 1자리 수는 앞에 0을 붙여 2자리 수로
@@ -50,7 +50,7 @@
 		
 		document.getElementById("clock").innerHTML = h+ ":" + m;	
 
-	 	if(tcounter%5==0){
+	 	if(tcounter%50==0){
 			getState();
 			tcounter=1;
 		}

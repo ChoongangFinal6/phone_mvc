@@ -12,21 +12,25 @@
 		// window.open(url, windowName, windowFeatures, optionalArg4)
 		var deviceWindow = window.open("${root}/device/device.do", "deviceWindow", 
 				"menubar=no, titlebar=yes, status=no, scrollbars=no, resizable=no, toolbar=no, " +
-				"width=300, height=600, top=0, left=600");	
+				"width=300, height=580, top=0, left=600");	
 	}
 </script>
 </head>
 <body>
+
     <c:if test="${id !='010-0000-0000'}">
-	${id}님  <a href="${root}/member/logout.do">[로그아웃]</a>
+	${id}님  <a href="${root}/member/logout.do">[Logout]</a>
 		<button onclick="runDevice()">
 		<img alt="phone" src="${root}/image/phone.jpg" id="phone"></button>
 	</c:if>
+ 
+ <div class="rogintop2">
  <c:if test="${id=='010-0000-0000'}">
-    ${id}님  <a href="${root}/member/logout.do">[로그아웃]</a>
-        <a href="${root}/member/memlist.do">[회원관리]</a>
+    ${id}님  <a href="${root}/member/logout.do">[Logout]</a>
+        <a href="${root}/member/memlist.do">[Manage_M]</a>
 		<button onclick="runDevice()">
 		<img alt="phone" src="${root}/image/phone.jpg" id="phone"></button>
     </c:if> 
+ </div>   
 </body>
 </html>
