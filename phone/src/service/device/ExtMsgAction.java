@@ -22,6 +22,7 @@ public class ExtMsgAction implements CommandProcess {
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// http://211.183.2.53:8181/phone/ext/sendMsg.do?sendId=010-1111-5555&targetId=010-0000-2222&content=ABCDEFGHIJKLMNOP
+		request.setCharacterEncoding("UTF-8");
 		String sendId = request.getParameter("sendId");
 		String targetId = request.getParameter("targetId");
 		String content = request.getParameter("content");

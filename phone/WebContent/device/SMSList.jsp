@@ -15,8 +15,10 @@
 	<div style="height: 50px;"></div>
 	<c:forEach var="sms" items="${ smsList }">
 		<c:if test="${sms.recvId==sessionScope.id}"><!-- 마지막 대화가 내가 받은 문자인경우 -->
+		
 		<a href='detailSMS.do?sendId=${sms.sendId}'>
 			<div class="chatListEntry">
+			<img src="/phone/image/contactPerson.png" style="float:left;width:50px;height:50px;margin: 5 15 0 0;">
 				<span style="font-weight:bold;">${sms.sendId}</span>
 				<c:if test="${sms.numOfNew >= 1}">
 					<span style="margin-left: 10px; font-weight:bold; color:red;">
@@ -33,6 +35,7 @@
 		<c:if test="${sms.sendId==sessionScope.id}"><!-- 마지막 대화가 내가 보낸 문자인경우 -->
 		<a href='detailSMS.do?sendId=${sms.recvId}'>
 			<div class="chatListEntry">
+			<img src="/phone/image/contactPerson.png" style="float:left;width:50px;height:50px;margin: 5 15 0 0;">
 				<span style="font-weight:bold;">${sms.recvId}</span>
 				<c:if test="${sms.numOfNew >= 1}">
 					<span style="margin-left: 10px; font-weight:bold; color:red;">

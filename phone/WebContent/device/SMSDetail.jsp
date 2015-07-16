@@ -14,7 +14,7 @@
 </script>
 </head>
 <body>
-	<div id="dialogTitle">${sendId}</div>
+	<div id="dialogTitle"><img src="/phone/image/contactPerson.png" style="width:50px;height:50px;margin: 5 15 0 0;">${sendId}</div>
 	<div id="dialogContent">
 		<div style="height: 80px;"></div>
 		<c:forEach var="sms" items="${ smsList }">
