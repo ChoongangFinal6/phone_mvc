@@ -3,6 +3,7 @@ package dto;
 import java.util.Date;
 
 public class SMS {
+	int smsNo;
 	String sendId;
 	String recvId;
 	String content;
@@ -14,12 +15,26 @@ public class SMS {
 	// 정보전달용 멤버변수
 	int numOfNew;
 	
+	public SMS() {}
+	public SMS(String sendId, String recvId, String content) {
+		this.sendId = sendId;
+		this.recvId = recvId;
+		this.content = content;
+	}
 	
 	public int getNumOfNew() {
 		return numOfNew;
 	}
 	public void setNumOfNew(int numOfNew) {
 		this.numOfNew = numOfNew;
+	}
+	
+	
+	public int getSmsNo() {
+		return smsNo;
+	}
+	public void setSmsNo(int smsNo) {
+		this.smsNo = smsNo;
 	}
 	public String getSendId() {
 		return sendId;
@@ -64,5 +79,8 @@ public class SMS {
 		this.deleted = delete;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return sendId + "/" +recvId +" : "+ content + ", " + sendDate ;
+	}
 }

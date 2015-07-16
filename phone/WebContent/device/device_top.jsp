@@ -1,51 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../template/aa.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+	#topBar {
+		height:30px;
+		background-color: black;
+		color:white;
+		padding : 0 0 0 0;
+	}
+	
+#clock{
+	vertical-align: top;
+	height:30px;
+	font-size: 15pt;
+	font-weight: bold;
+	margin-left: 5px; 
+}
+
+#result {
+	vertical-align: top;
+	margin-left: 20px;
+	height: 30px;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
+
 	function timer_start() { 
 		tcounter = 0;
 		t1 = setInterval(timer, 1000);
 	}
+	
+	// 1자리 수는 앞에 0을 붙여 2자리 수로
+	function doubleDigit(i) {
+	    if (i < 10) {
+	        i= "0" + i;
+	    }
+	    return i;
+	}
 
 	function timer() {
 		tcounter = tcounter + 1;
-		document.getElementById("timer_s").innerHTML = tcounter;
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		m = doubleDigit(m);
 		
-		if(tcounter%3==0){
+		document.getElementById("clock").innerHTML = h+ ":" + m;	
+
+	 	if(tcounter%5==0){
 			getState();
+			tcounter=1;
 		}
 	}
 	
+	// 새 문자가 몇 개 와있는지 조회
 	function getState(){
-		var recvId = '01011112222';
-		var pass = '1234';
-		var params = 'recvId=' + recvId + '&pass=' + pass;
+		var recvId = ${id};
+		var params = 'recvId=' + recvId;
 
 		$.ajaxSetup( {
 			type : 'post',
 			url : 'smsRecv.do',
-			dataType : 'html', 
+			dataType : 'text', 
 			success : function(data){
-				$('#result').html($(data).find('#status_sms'));
+				var num = $(data).find('#newMsg').text();
+				if(num>=1){
+					var imgSrc = "<img src='${root}/image/envelop1.png' style='width:25px; height:25px;'>"
+					+ "<img src='${root}/image/"+num+".png' style='width:15px;'>";
+					$('#result').html(imgSrc);
+				}else{
+					
+				}
+				
 			}
 		});
 		
 		$.ajax({ data:params}); 
 	}
 	
+	// 문자 대화 리스트를 조회
+	function getDialogList(){
+		var recvId = ${id};
+		var params = 'recvId=' + recvId;
+		
+		$.ajaxSetup( {
+			type : 'post',
+			url : 'listSMS.do',
+			dataType : 'html', 
+			success : function(data){
+				$('#device_Article').html($(data).find('#chatList'));
+			}
+		});
+		
+		$.ajax({ data:params}); 
+	}
+/* 
+	$('#result').click( function(){
+		alert("1");
+		getDialogList();	
+	});
+ */
 </script>
 </head>
 
 <body onLoad="timer_start()">
-
-	<table border="1">
-		<tr>
-			<td><span id="timer_s"></span></td>
-			<td><span id="result"></span></td>
-		</tr>
-	</table>
-
+	<div id="topBar">
+		<span id="clock"></span>
+		<span id="result" onclick="getDialogList()"></span>
+	</div>
 </body>
 </html>

@@ -4,6 +4,7 @@
 
 <mapper namespace="SMS">
 	<resultMap id="ResultMap" type="SMS" >
+		<result column="smsNo" property="smsNo"/>
 		<result column="sendId" property="sendId"/>
 		<result column="recvId" property="recvId"/>
 		<result column="content" property="content"/>
@@ -13,16 +14,48 @@
 		<result column="deleted" property="deleted"/>
 	</resultMap>
 	
-<!-- selectSMS : 새로온 메세지의 수를 카운트 -->
-	<select id="newSMS" parameterType="integer" resultType="integer">
+<!-- getNumOfNew : 새로온 메세지의 수를 카운트 -->
+	<select id="getNumOfNew" parameterType="integer" resultType="integer">
 		select count(*) from SMS where recvId=#{recvId} and read='0'
 	</select>
+	
+<!-- listAllChat : 대화방 목록 조회 -->	
+	<select id="listAllChat" parameterType="String" resultMap="ResultMap">
+		select recvId from SMS where sendId=#{userId} and deleted='0'
+		union
+		select sendId from SMS where recvId=#{userId} and deleted='0'
+	</select>
 
+<!-- allMsg : 내가 주고 받은 모든 메세지 -->	
+	<select id="allMsg" parameterType="String" resultMap="ResultMap">
+		SELECT * 
+			FROM sms 
+			WHERE (sendId=#{userId} OR recvId=#{userId} ) AND deleted='0'
+			ORDER BY sendDate DESC
+	</select>
+	
+<!-- lastMsgWith : 특정 대상과 주고받은 마지막 메세지 -->	
+	<select id="lastMsgWith" parameterType="SMS" resultType="SMS">
+		SELECT *
+			FROM (	SELECT sendId, recvId, content,sendDate 
+						FROM sms 
+						WHERE (sendId=#{sendId} AND recvId=#{recvId}) OR (sendId=#{recvId} AND recvId=#{sendId})
+						order by sendDate desc )
+			WHERE ROWNUM=1
+	</select>
+	
+<!-- numOfNewWith : 특정 대상이 보내온 문자중 읽지않은 수 -->
+	<select id="numOfNewWith" parameterType="SMS" resultType="integer">
+		SELECT COUNT(*) FROM sms WHERE recvId=#{recvId} AND sendId=#{sendId} AND read='0'
+	</select>
+	
+	
 <!-- listNewSenders : 새 메세지를 보낸 발신자들의 리스트를 조회 -->	
 	<select id="listNewSenders" parameterType="String" resultMap="ResultMap">
 		select distinct sendId from SMS where recvId=#{recvId} and read='0'
 	</select>
-
+	
+	
 <!-- listNewSMS : 새 메세지들을 모두 조회 -->	
 	<select id="listNewSMS" parameterType="String" resultMap="ResultMap">
 		select * from SMS where recvId=#{recvId} and deleted='0' and read='0'
@@ -31,7 +64,8 @@
 <!-- detailSMS : 특정 발신자와 주고 받은 문자를 모두 조회 -->
 	<select id="detailSMS" parameterType="SMS" resultMap="ResultMap">
 		select * from SMS 
-		where (recvId=#{recvId} and sendId=#{sendId}) or (recvId=#{sendId} and sendId=#{recvId}) 
+		where (recvId=#{recvId} and sendId=#{sendId}) or (recvId=#{sendId} and sendId=#{recvId})
+		order by sendDate
 	</select>
 	
 <!-- setRead : 읽은 문자들을 '읽음'상태로 설정 -->	
@@ -40,4 +74,9 @@
 		set read='1'
 		where recvId=#{recvId} and sendId=#{sendId}
 	</update>
+
+<!-- sendNewMsg : 문자 전송 -->
+	<insert id="sendNewMsg" parameterType="SMS">
+		insert into SMS (smsNo, sendId, recvId, content) values (seq_sms.nextval, #{sendId}, #{recvId}, #{content}) 
+	</insert>	
 </mapper>

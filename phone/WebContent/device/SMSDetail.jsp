@@ -6,43 +6,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.msgBalloon {
-		border: 1px solid black;
-	}
-</style>
+<script type="text/javascript">
+	$( document ).ready( function() {
+	  var position =  $('#lastMsg').offset();
+	    $('html, body').animate({scrollTop : position.top}, 100);
+	});
+</script>
 </head>
 <body>
-	<h3>${sendId}와의 대화목록</h3>
-	
-	<table>
+	<div id="dialogTitle">${sendId}</div>
+	<div id="dialogContent">
+		<div style="height: 80px;"></div>
 		<c:forEach var="sms" items="${ smsList }">
-			<tr>
-				<c:if test="${sms.recvId==id}">
-					<td>
-						<div class="msgBalloon">	
-						${sms.content}<br>
-						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/><br>
-						</div>				
-					</td>
-					<td></td>
-				</c:if>
-				<c:if test="${sms.sendId==id}">
-					<td></td>
-					<td>
-						<div class="msgBalloon">	
-						${sms.content}<br>
-						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/><br>				
-						</div>
-					</td>
-				</c:if>
-			</tr>
+			<c:if test="${sms.recvId==id}">
+				<div class="talkBubble_L">
+					<span class="tb_Content_L">${sms.content}</span>
+					<br>		
+					<span class="tb_Date_L">
+						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/></span>
+				</div>
+			</c:if>
+			
+			<c:if test="${sms.sendId==id}">
+				<div class="talkBubble_R">
+					<span class="tb_Content_R">${sms.content}</span>
+					<br>
+					<span class="tb_Date_R">
+						<fmt:formatDate type="both" pattern="M월d일 hh:mm" value="${sms.sendDate}"/></span>
+				</div>
+			</c:if>
 		</c:forEach>
-	</table>
-	<div style="position: absolute; bottom: 50px;">
+		<div id="lastMsg" style="height: 60px"></div>
+	</div>
+	
+	<div id="msgForm">
 	<form action="sendMsg.do">
 		<input type="text" name="targetId" value="${sendId}" hidden="true">
-		<input type="text" name="content" required="required" style="width: 100%; padding:5px;"><button style="padding:5px;">전송</button>
+		<textarea name="content" id="msgInput" cols="22" placeholder="메세지를 입력하세요" required="required"></textarea>
+		<button id="msgSendBtn"></button>
 	</form>
 	</div>
 </body>
