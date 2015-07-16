@@ -11,8 +11,9 @@
 <c:if test="${result>0}">
 <script type="text/javascript">
  alert("${id}님 가입완료 되었습니다.");
- location.href("home.do"); 
-</script>
+ location.href="../home.do"; //${root} 해도된다  command.properties에 설정 에서 보면 home.do로 하면
+                             // member/home.do로 간다. 그래서 경로를 못찾음
+</script>                    
 </c:if>
 <c:if test="${result<=0 }">
 <script type="text/javascript">

@@ -12,7 +12,7 @@ public class HomeAction implements CommandProcess {
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	
-		return "home.jsp";
+		return "/template/home.jsp";
 	}
 
 }

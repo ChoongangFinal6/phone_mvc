@@ -16,7 +16,6 @@
 	<section style="height: 550px;">
 		<article>
 			<jsp:include page="${viewPage}" />
-			<%-- ${viewPage} --%>
 		</article>
 	</section>
 	<footer>
