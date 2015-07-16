@@ -60,7 +60,7 @@
       width: 13px;
       height: 0;
       padding-top: 13px;
-      background-image: url(img/pagination.png);
+      background-image: url(${root}/img/pagination.png);
       background-position: 0 0;
       float: left;
       overflow: hidden;
